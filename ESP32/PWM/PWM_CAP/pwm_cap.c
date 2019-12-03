@@ -10,6 +10,8 @@
 
 
 //定义一个输入捕获管脚
+//config capture pin
+
 #define GPIO_CAP0_IN 22   //Set GPIO 25 as  CAP0
 
 #define CAP0_INT_EN BIT(27)  //Capture 0 interrupt bit
@@ -64,7 +66,9 @@ static void disp_captured_signal(void *arg)
     }
 }
 
-//PWM初始化
+/** @brief pwm init
+ * @brief pwm初始化
+*/
 void M_pwm_init()
 {
     mcpwm_pin_config_t pin_config = {
@@ -77,8 +81,8 @@ void M_pwm_init()
     gpio_pulldown_en(GPIO_CAP0_IN); //Enable pull down on CAP0   signal
 }
 
-/** @brief 配置pwm捕获开始
- * 
+/** @brief 配置pwm捕获，并且开始
+ * @brief config pwm capture and start.
 */
 void M_pwm_cap_start()
 {
